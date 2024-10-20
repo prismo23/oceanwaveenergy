@@ -20,6 +20,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Navigation Bar */
 nav {
     background: rgba(0, 91, 150, 0.9);
     padding: 10px 20px;
@@ -37,6 +38,15 @@ nav .logo {
     font-size: 2em;
     font-weight: 700;
     color: #ffffff;
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 2em;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 nav ul {
@@ -62,11 +72,7 @@ nav ul li a:hover, nav ul li a:focus {
     transform: scale(1.1);
 }
 
-nav ul li .disabled-link {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
+/* Main Section Styling */
 .section {
     padding: 80px 20px;
     max-width: 1000px;
@@ -82,23 +88,6 @@ nav ul li .disabled-link {
     font-size: 2em;
     margin-bottom: 20px;
     color: #0288d1;
-}
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    margin: 20px 0;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
 }
 
 .formula-box {
@@ -126,6 +115,7 @@ nav ul li .disabled-link {
     transform: scale(1.05);
 }
 
+/* Quiz Styling */
 .user-info-container {
     display: flex;
     flex-direction: column;
@@ -137,7 +127,7 @@ nav ul li .disabled-link {
     padding: 10px;
     font-size: 1em;
     margin: 10px 0;
-    width: 80%;
+    width: 90%;
     max-width: 300px;
     border: 1px solid #0288d1;
     border-radius: 8px;
@@ -157,7 +147,7 @@ nav ul li .disabled-link {
     color: white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     font-size: 1em;
-    width: 90%;
+    width: 95%;
     max-width: 600px;
 }
 
@@ -191,4 +181,126 @@ nav ul li .disabled-link {
 
 .hidden {
     display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 50px;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(0, 91, 150, 0.9);
+        transition: right 0.3s ease;
+        padding-top: 20px;
+        display: none;
+        z-index: 2000;
+    }
+
+    nav ul.show {
+        right: 0;
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    nav .logo {
+        font-size: 1.5em;
+    }
+
+    .section {
+        padding: 60px 15px;
+        margin-top: 80px;
+    }
+
+    .wave-title {
+        font-size: 1.8em;
+    }
+
+    .formula-box {
+        font-size: 1em;
+    }
+
+    .lesson-complete-btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+
+    .user-input {
+        font-size: 0.9em;
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .quiz-card {
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .quiz-option {
+        font-size: 0.9em;
+        padding: 10px 18px;
+    }
+
+    #user-info-display, #final-score {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        width: 100%;
+        height: auto;
+        position: static;
+        top: 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .section {
+        padding: 40px 10px;
+        margin-top: 60px;
+    }
+
+    .wave-title {
+        font-size: 1.5em;
+    }
+
+    .formula-box {
+        font-size: 0.8em;
+    }
+
+    .lesson-complete-btn {
+        font-size: 0.8em;
+        padding: 8px 16px;
+    }
+
+    .user-input {
+        font-size: 0.8em;
+        max-width: 200px;
+    }
+
+    .quiz-card {
+        width: 100%;
+        font-size: 0.8em;
+    }
+
+    .quiz-option {
+        font-size: 0.8em;
+        padding: 8px 15px;
+    }
+
+    #user-info-display, #final-score {
+        font-size: 1em;
+    }
 }
