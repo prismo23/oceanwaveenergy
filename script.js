@@ -1,23 +1,5 @@
 let score = 0; // Initial score
 let answeredQuestions = 0; // Track answered questions
-let completedLessons = 0; // Track completed lessons
-
-// Mark lesson as complete
-function markLessonComplete(lessonNumber) {
-    const lessonButton = document.querySelector(`#lesson${lessonNumber} .lesson-complete-btn`);
-    if (lessonButton) {
-        lessonButton.disabled = true;
-        lessonButton.style.backgroundColor = '#4caf50';
-        lessonButton.textContent = 'Completed ✔️';
-
-        completedLessons++; // Increment completed lessons
-
-        // Enable quiz if all lessons are complete
-        if (completedLessons === 3) {
-            document.getElementById('quiz-link').classList.remove('disabled-link');
-        }
-    }
-}
 
 // Select an answer without showing feedback immediately
 function selectAnswer(button, correctness) {
@@ -39,7 +21,6 @@ function selectAnswer(button, correctness) {
 // Submit the quiz and display the final score
 function submitQuiz() {
     const userName = document.getElementById('user-name').value;
-    const userEmail = document.getElementById('user-email').value;
     const scoreContainer = document.getElementById('score-container');
     const userInfoDisplay = document.getElementById('user-info-display');
     const finalScoreElement = document.getElementById('final-score');
@@ -50,16 +31,26 @@ function submitQuiz() {
         return;
     }
 
-    // Ensure user information is filled in
-    if (!userName || !userEmail) {
-        alert("Please enter your name and email before submitting.");
+    // Ensure user name is provided
+    if (!userName) {
+        alert("Please enter your name before submitting.");
         return;
     }
 
     // Display user info and score
-    userInfoDisplay.textContent = `Name: ${userName}, Email: ${userEmail}`;
+    userInfoDisplay.textContent = `Name: ${userName}`;
     finalScoreElement.textContent = `Final Score: ${score}/10`;
 
     // Show score container
     scoreContainer.classList.remove('hidden');
+}
+
+// Mark lesson as complete
+function markLessonComplete(lessonNumber) {
+    const lessonButton = document.querySelector(`#lesson${lessonNumber} .lesson-complete-btn`);
+    if (lessonButton) {
+        lessonButton.disabled = true;
+        lessonButton.style.backgroundColor = '#4caf50';
+        lessonButton.textContent = 'Completed ✔️';
+    }
 }
